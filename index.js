@@ -8,13 +8,19 @@ function createField(numberOfRows) {
 
     sketchField.appendChild(row)
   }
+
+  let defaultOpacity = 0.2
   const rowList = document.querySelectorAll('.row')
   rowList.forEach((row) => {
     for (j = 1; j <= numberOfRows; j++) {
       const cell = document.createElement('div')
       cell.classList.add('cell')
+      let currOpacity = defaultOpacity
+      cell.setAttribute('opacity', `${currOpacity}`)
       cell.addEventListener('mouseover', (e) => {
-        cell.style.cssText = 'background-color: lightblue;'
+        // cell.style.cssText = 'background-color: lightblue;'
+        cell.style.cssText = `background-color: rgba(0, 0, 0, ${currOpacity});`
+        currOpacity += 0.15
       })
       row.appendChild(cell)
     }
